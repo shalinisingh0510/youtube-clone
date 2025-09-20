@@ -9,12 +9,12 @@ import thumbnail6 from'../../assets/thumbnail6.png'
 import thumbnail7 from'../../assets/thumbnail7.png'
 import thumbnail8 from'../../assets/thumbnail8.png'
 import { Link } from 'react-router-dom'
-import { API_KEY } from '../../data'
+import { API_key } from '../../data'
 const Feed = (category) => {
     const [data, setData] = useState([]);
     const fetchData = async () =>{
-       const videolist_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=[YOUR_API_KEY] HTTP/1.1`
-    await fetch(videolist_url).then(Response=>Response.json()).then(data=>setData(data.item))
+       const videolist_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&key=${API_key}`
+    await fetch(videolist_url).then(Response=>Response.json()).then(data=>setData(data.items))
     }
     useEffect(()=>{
         fetchData();
